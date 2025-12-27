@@ -13,122 +13,120 @@
         <div class="package-row">
 
             {% for pkg in packages %}
-<div class="card mb-4 shadow-sm p-3">
+                <div class="card  mb-4 shadow-sm p-3">
 
-    <!-- TITLE -->
-    <h3 class="mb-3">{{ pkg.title }}</h3>
+                    <!-- TITLE -->
+                    <h3 class="mb-3">{{ pkg.title }}</h3>
 
-    <!-- IMAGE + DESCRIPTION (SIDE BY SIDE) -->
-    <div class="row align-items-start mb-4">
+                    <!-- IMAGE + DESCRIPTION (SIDE BY SIDE) -->
+                    <div class="row align-items-start mb-4">
 
-        <!-- LEFT: IMAGE -->
-        <div class="col-md-4 text-start">
-            {% if pkg.image %}
-                <img src="{{ pkg.image.url }}" 
-                     class="img-fluid rounded"
-                     style="max-height: 260px; object-fit: cover;"
-                     alt="{{ pkg.title }}">
-            {% else %}
-                <img src="{% static 'images/placeholder.jpg' %}" 
-                     class="img-fluid rounded"
-                     alt="Package Image">
-            {% endif %}
-        </div>
+                        <!-- LEFT: IMAGE -->
+                        <div class="col-md-4 text-start">
+                            {% if pkg.image %}
+                                <img src="{{ pkg.image.url }}" 
+                                    class="img-fluid rounded"
+                                    style="max-height: 260px; object-fit: cover;"
+                                    alt="{{ pkg.title }}">
+                            {% else %}
+                                <img src="{% static 'images/placeholder.jpg' %}" 
+                                    class="img-fluid rounded"
+                                    alt="Package Image">
+                            {% endif %}
+                        </div>
 
-        <!-- RIGHT: DESCRIPTION -->
-        <div class="col-md-8">
-            <strong>Description:</strong>
-            <p class="mb-1">{{ pkg.description }}</p>
-        </div>
+                        <!-- RIGHT: DESCRIPTION -->
+                        <div class="col-md-8">
+                            <strong>Description:</strong>
+                            <p class="mb-1">{{ pkg.description }}</p>
+                        </div>
 
-    </div>
+                    </div>
 
-    <!-- BASIC INFO ROW -->
-    <div class="mb-3">
-        <strong>Basic Info:</strong>
-        <div class="row mt-2">
-            <div class="col-md-4"><i class="bi bi-clock-fill"></i> {{ pkg.days }}D / {{ pkg.nights }}N</div>
-            <div class="col-md-4"><i class="bi bi-people-fill"></i> Pax: {{ pkg.pax }}</div>
-            <div class="col-md-4"><i class="bi bi-geo-alt-fill"></i> {{ pkg.region }}</div>
-        </div>
-    </div>
+                    <!-- BASIC INFO ROW -->
+                    <div class="mb-3">
+                        <strong>Basic Info:</strong>
+                        <div class="row mt-2">
+                            <div class="col-md-4"><i class="bi bi-clock-fill"></i> {{ pkg.days }}D / {{ pkg.nights }}N</div>
+                            <div class="col-md-4"><i class="bi bi-people-fill"></i> Pax: {{ pkg.pax }}</div>
+                            <div class="col-md-4"><i class="bi bi-geo-alt-fill"></i> {{ pkg.region }}</div>
+                        </div>
+                    </div>
 
-    <!-- EXTRA DETAILS ROW -->
-    <div class="mb-3">
-        <strong>Package Includes:</strong>
-        <div class="row mt-2">
-            <div class="col-md-4"><i class="bi bi-bus-front"></i> {{ pkg.transport_type }}</div>
-            <div class="col-md-4"><i class="bi bi-building"></i> {{ pkg.hotel_category }}</div>
-            <div class="col-md-4"><i class="bi bi-door-open"></i> {{ pkg.room_type }}</div>
+                    <!-- EXTRA DETAILS ROW -->
+                    <div class="mb-3">
+                        <strong>Package Includes:</strong>
+                        <div class="row mt-2">
+                            <div class="col-md-4"><i class="bi bi-bus-front"></i> {{ pkg.transport_type }}</div>
+                            <div class="col-md-4"><i class="bi bi-building"></i> {{ pkg.hotel_category }}</div>
+                            <div class="col-md-4"><i class="bi bi-door-open"></i> {{ pkg.room_type }}</div>
 
-            {% if pkg.meals_included %}
-            <div class="col-md-4 mt-2"><i class="bi bi-cup-hot"></i> Meals Included</div>
-            {% endif %}
+                            {% if pkg.meals_included %}
+                            <div class="col-md-4 mt-2"><i class="bi bi-cup-hot"></i> Meals Included</div>
+                            {% endif %}
 
-            {% if pkg.sightseeing_included %}
-            <div class="col-md-4 mt-2"><i class="bi bi-binoculars"></i> Sightseeing</div>
-            {% endif %}
+                            {% if pkg.sightseeing_included %}
+                            <div class="col-md-4 mt-2"><i class="bi bi-binoculars"></i> Sightseeing</div>
+                            {% endif %}
 
-            {% if pkg.tour_guide %}
-            <div class="col-md-4 mt-2"><i class="bi bi-person-badge"></i> Tour Guide</div>
-            {% endif %}
-        </div>
-    </div>
+                            {% if pkg.tour_guide %}
+                            <div class="col-md-4 mt-2"><i class="bi bi-person-badge"></i> Tour Guide</div>
+                            {% endif %}
+                        </div>
+                    </div>
 
-    <!-- PLACES COVERED -->
-    {% if pkg.places_covered %}
-    <div class="mb-3">
-        <strong>Places Covered:</strong>
-        <p class="mb-1">{{ pkg.places_covered }}</p>
-    </div>
-    {% endif %}
+                    <!-- PLACES COVERED -->
+                    {% if pkg.places_covered %}
+                    <div class="mb-3">
+                        <strong>Places Covered:</strong>
+                        <p class="mb-1">{{ pkg.places_covered }}</p>
+                    </div>
+                    {% endif %}
 
-    <!-- OFFER -->
-    {% if pkg.offer_title %}
-    <div class="mb-3">
-        <strong>Offer:</strong>
-        <p class="text-success mb-1"><i class="bi bi-gift-fill"></i> {{ pkg.offer_title }}</p>
-    </div>
-    {% endif %}
+                    <!-- OFFER -->
+                    {% if pkg.offer_title %}
+                    <div class="mb-3">
+                        <strong>Offer:</strong>
+                        <p class="text-success mb-1"><i class="bi bi-gift-fill"></i> {{ pkg.offer_title }}</p>
+                    </div>
+                    {% endif %}
 
-    <!-- DEPARTURE -->
-    {% if pkg.departure_date %}
-    <div class="mb-3">
-        <strong>Departure Date:</strong>
-        <p class="mb-1"><i class="bi bi-calendar-event"></i> {{ pkg.departure_date }}</p>
-    </div>
-    {% endif %}
+                    <!-- DEPARTURE -->
+                    {% if pkg.departure_date %}
+                    <div class="mb-3">
+                        <strong>Departure Date:</strong>
+                        <p class="mb-1"><i class="bi bi-calendar-event"></i> {{ pkg.departure_date }}</p>
+                    </div>
+                    {% endif %}
 
-    <!-- PRICE -->
-    <div class="mb-3">
-        <strong>Price:</strong>
-        <h4 class="mt-1">₹{{ pkg.price }} <small class="text-muted">/ person</small></h4>
-    </div>
+                    <!-- PRICE -->
+                    <div class="mb-3">
+                        <strong>Price:</strong>
+                        <h4 class="mt-1">₹{{ pkg.price }} <small class="text-muted">/ person</small></h4>
+                    </div>
 
-    <!-- RATING & REVIEWS -->
-    <div class="mb-3">
-        <strong>Rating:</strong>
-        <div class="mt-1">
-            {% for i in "12345"|slice:":pkg.rating|floatformat:0" %}
-                <i class="bi bi-star-fill text-warning"></i>
+                    <!-- RATING & REVIEWS -->
+                    <div class="mb-3">
+                        <strong>Rating:</strong>
+                        <div class="mt-1">
+                            {% for i in "12345"|slice:":pkg.rating|floatformat:0" %}
+                                <i class="bi bi-star-fill text-warning"></i>
+                            {% endfor %}
+                            <span class="ms-2 text-muted">({{ pkg.reviews_count }} reviews)</span>
+                        </div>
+                    </div>
+
+                    <!-- BOOK BUTTON -->
+                    <button class="btn book-btn-disabled w-100" disabled>
+                        <span class="btn-title">
+                            Book Now
+                        </span>
+                    </button>
+
+                </div>
+            {% empty %}
+                <p class="text-center text-muted">No packages available.</p>
             {% endfor %}
-            <span class="ms-2 text-muted">({{ pkg.reviews_count }} reviews)</span>
-        </div>
-    </div>
-
-    <!-- BOOK BUTTON -->
-    <button class="btn book-btn-disabled w-100" disabled>
-        <span class="btn-title">
-            Book Now
-        </span>
-    </button>
-
-</div>
-{% empty %}
-    <p class="text-center text-muted">No packages available.</p>
-{% endfor %}
-
-
         </div>
     </div>
 </section>

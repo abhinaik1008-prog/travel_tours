@@ -9,7 +9,9 @@ if (window.__HOME_JS_LOADED__) {
     /* ================= GLOBAL ================= */
     window.BASE_URL = window.BASE_URL || "http://127.0.0.1:8000";
 
-    /* ================= NAVBAR HIDE ONCE → RETURN → LOCK ================= */
+        /* ============================================================== */
+        /* ============== NAVBAR HIDE ONCE → RETURN → LOCK ============== */
+        /* ============================================================== */
     (() => {
         const navbar = document.querySelector(".custom-navbar");
         if (!navbar) return;
@@ -33,8 +35,77 @@ if (window.__HOME_JS_LOADED__) {
     })();
 
     document.addEventListener("DOMContentLoaded", () => {
+      
+        /* ============================================================== */
+        /* ========================= DESTINATIONS ======================= */
+        /* ============================================================== */
+        const destinationsContainer = document.getElementById("destinations-container");
+        const noDestinations = document.getElementById("no-destinations");
 
-        /* ================= PACKAGES ================= */
+        if (destinationsContainer) {
+            fetch(`${window.BASE_URL}/api/destinations/`)
+                .then(res => res.json())
+                .then(destinations => {
+
+                    destinationsContainer.innerHTML = "";
+
+                    if (!Array.isArray(destinations) || destinations.length === 0) {
+                        noDestinations?.classList.remove("d-none");
+                        return;
+                    }
+
+                    noDestinations?.classList.add("d-none");
+
+                    destinations.forEach(dest => {
+                        let image = "/static/images/placeholder.jpg";
+
+                        if (dest.image) {
+                            image = dest.image.startsWith("http")
+                                ? dest.image
+                                : `${window.BASE_URL}${dest.image}`;
+                        }
+
+                        destinationsContainer.insertAdjacentHTML("beforeend", `
+                            <div class="col-12 col-sm-6 col-lg-4">
+                                <div class="destination-card">
+                                    <img src="${image}" alt="${dest.name}">
+                                    <div class="destination-overlay">
+
+                                        <!-- LEFT : Country + Place -->
+                                        <div class="destination-left">
+                                            <span class="destination-country">
+                                                ${dest.country || "India"}
+                                            </span>
+
+                                            <h5 class="destination-name">
+                                                ${dest.name}
+                                            </h5>
+                                        </div>
+
+                                        <!-- RIGHT : Description (vertically centered) -->
+                                        <div class="destination-right">
+                                            <p class="destination-desc">
+                                                ${
+                                                    dest.description
+                                                        ? dest.description.slice(0, 90)
+                                                        : "A popular travel destination loved by explorers."
+                                                }
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        `);
+                    });
+                })
+                .catch(err => console.error("Destinations API error:", err));
+        }
+
+        /* ============================================================== */
+        /* =========================== PACKAGES ========================= */
+        /* ============================================================== */
         const packagesContainer = document.getElementById("packages-container");
         const noPackages = document.getElementById("no-packages");
 
@@ -80,112 +151,61 @@ if (window.__HOME_JS_LOADED__) {
                 })
                 .catch(err => console.error("Packages API error:", err));
         }
-      
-        /* ================= DESTINATIONS ================= */
-        const destinationsContainer = document.getElementById("destinations-container");
-        const noDestinations = document.getElementById("no-destinations");
 
-        if (destinationsContainer) {
-            fetch(`${window.BASE_URL}/api/destinations/`)
-                .then(res => res.json())
-                .then(destinations => {
+        /* ============================================================== */
+        /* ================= PACKAGE MORE / LESS TOGGLE ================= */
+        /* ============================================================== */
 
-                    destinationsContainer.innerHTML = "";
+        const packageToggles = document.querySelectorAll(".package-toggle");
 
-                    if (!Array.isArray(destinations) || destinations.length === 0) {
-                        noDestinations?.classList.remove("d-none");
-                        return;
-                    }
+        packageToggles.forEach(toggle => {
+            toggle.addEventListener("click", function () {
 
-                    noDestinations?.classList.add("d-none");
+                const card = this.closest(".package-card");
+                if (!card) return;
 
-                    destinations.forEach(dest => {
-                        let image = "/static/images/placeholder.jpg";
+                // Close all other cards
+                document.querySelectorAll(".package-card").forEach(otherCard => {
+                    if (otherCard !== card) {
+                        otherCard.classList.remove("expanded");
 
-                        if (dest.image) {
-                            image = dest.image.startsWith("http")
-                                ? dest.image
-                                : `${window.BASE_URL}${dest.image}`;
+                        otherCard.querySelector(".short-desc")?.classList.remove("d-none");
+                        otherCard.querySelector(".full-desc")?.classList.add("d-none");
+                        otherCard.querySelector(".package-extra-details")?.classList.add("d-none");
+
+                        const btn = otherCard.querySelector(".package-toggle");
+                        if (btn) {
+                            btn.innerHTML = `More <i class="bi bi-chevron-down ms-1"></i>`;
                         }
+                    }
+                });
 
-                        destinationsContainer.insertAdjacentHTML("beforeend", `
-                            <div class="col-12 col-sm-6 col-lg-4">
-                                <div class="destination-card">
-                                    <img src="${image}" alt="${dest.name}">
-                                    <div class="destination-overlay">
-                                        <span class="destination-country">
-                                            ${dest.country || "India"}
-                                        </span>
-                                        <h5 class="destination-name">${dest.name}</h5>
-                                        <p class="destination-desc">
-                                            ${
-                                                dest.description
-                                                    ? dest.description.slice(0, 90)
-                                                    : "A popular travel destination loved by explorers."
-                                            }
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        `);
-                    });
-                })
-                .catch(err => console.error("Destinations API error:", err));
-        }
+                const isExpanded = card.classList.toggle("expanded");
 
+                const shortDesc = card.querySelector(".short-desc");
+                const fullDesc = card.querySelector(".full-desc");
+                const extraDetails = card.querySelector(".package-extra-details");
 
-/* ================= PACKAGE MORE / LESS TOGGLE ================= */
-/* ================= PACKAGE MORE / LESS TOGGLE ================= */
+                if (isExpanded) {
+                    shortDesc?.classList.add("d-none");
+                    fullDesc?.classList.remove("d-none");
+                    extraDetails?.classList.remove("d-none");
 
-const packageToggles = document.querySelectorAll(".package-toggle");
+                    this.innerHTML = `Less <i class="bi bi-chevron-up ms-1"></i>`;
+                } else {
+                    shortDesc?.classList.remove("d-none");
+                    fullDesc?.classList.add("d-none");
+                    extraDetails?.classList.add("d-none");
 
-packageToggles.forEach(toggle => {
-    toggle.addEventListener("click", function () {
-
-        const card = this.closest(".package-card");
-        if (!card) return;
-
-        // Close all other cards
-        document.querySelectorAll(".package-card").forEach(otherCard => {
-            if (otherCard !== card) {
-                otherCard.classList.remove("expanded");
-
-                otherCard.querySelector(".short-desc")?.classList.remove("d-none");
-                otherCard.querySelector(".full-desc")?.classList.add("d-none");
-                otherCard.querySelector(".package-extra-details")?.classList.add("d-none");
-
-                const btn = otherCard.querySelector(".package-toggle");
-                if (btn) {
-                    btn.innerHTML = `More <i class="bi bi-chevron-down ms-1"></i>`;
+                    this.innerHTML = `More <i class="bi bi-chevron-down ms-1"></i>`;
                 }
-            }
+            });
         });
 
-        const isExpanded = card.classList.toggle("expanded");
 
-        const shortDesc = card.querySelector(".short-desc");
-        const fullDesc = card.querySelector(".full-desc");
-        const extraDetails = card.querySelector(".package-extra-details");
-
-        if (isExpanded) {
-            shortDesc?.classList.add("d-none");
-            fullDesc?.classList.remove("d-none");
-            extraDetails?.classList.remove("d-none");
-
-            this.innerHTML = `Less <i class="bi bi-chevron-up ms-1"></i>`;
-        } else {
-            shortDesc?.classList.remove("d-none");
-            fullDesc?.classList.add("d-none");
-            extraDetails?.classList.add("d-none");
-
-            this.innerHTML = `More <i class="bi bi-chevron-down ms-1"></i>`;
-        }
-    });
-});
-
-
+        /* =============================================================== */
         /* ================= TRAVEL MEMORIES AUTO SCROLL ================= */
-        /* ================= TRAVEL MOMENTS — TRUE INFINITE BOTH DIRECTIONS ================= */
+        /* =============================================================== */
 
         function infiniteScroll(trackSelector, speed, direction) {
             const track = document.querySelector(trackSelector);
@@ -231,7 +251,9 @@ packageToggles.forEach(toggle => {
         infiniteScroll(".slider-left .travel-track", 0.4, "left");   // RIGHT → LEFT
         infiniteScroll(".slider-right .travel-track", 0.4, "right"); // LEFT → RIGHT
 
-        /* ================= STATS COUNT-UP ================= */
+        /* ============================================================== */
+        /* ======================== STATS COUNT-UP ====================== */
+        /* ============================================================== */
         const counters = document.querySelectorAll(".stat-number");
 
         if (counters.length > 0) {
