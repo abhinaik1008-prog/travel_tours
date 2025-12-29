@@ -3,7 +3,9 @@ from .views import (
     home,
     PackageListAPIView,
     PackageDetailAPIView,
-    popular_packages_page
+    popular_packages_page,
+    package_detail,
+    packages_list
 )
 
 urlpatterns = [
@@ -14,4 +16,7 @@ urlpatterns = [
     # APIs (prefix with api/)
     path("api/packages/", PackageListAPIView.as_view(), name="packages-api"),
     path("api/packages/<int:pk>/", PackageDetailAPIView.as_view(), name="package-detail-api"),
+
+    path("", packages_list, name="packages"),
+    path("<slug:slug>/", package_detail, name="package-detail"),
 ]

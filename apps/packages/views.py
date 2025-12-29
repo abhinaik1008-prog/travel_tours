@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
@@ -8,9 +8,27 @@ from .models import Package, PopularPackage
 from .serializers import PackageSerializer, PopularPackageSerializer
 
 
+
 # ================= HOME PAGE (HTML) =================
 def home(request):
     return render(request, "home.html")
+
+
+
+
+def packages_list(request):
+    packages = Package.objects.filter(is_active=True)
+    return render(request, "packages/packages_list.html", {
+        "packages": packages
+    })
+
+def package_detail(request, slug):
+    package = get_object_or_404(Package, slug=slug, is_active=True)
+    return render(request, "packages/package_detail.html", {
+        "package": package
+    })
+
+
 
 
 # ================= NORMAL PACKAGES API (JSON) =================
