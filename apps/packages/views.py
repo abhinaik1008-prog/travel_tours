@@ -22,8 +22,8 @@ def packages_list(request):
         "packages": packages
     })
 
-def package_detail(request, slug):
-    package = get_object_or_404(Package, slug=slug, is_active=True)
+def package_detail(request, id):
+    package = get_object_or_404(Package, id=id, is_active=True)
     return render(request, "packages/package_detail.html", {
         "package": package
     })
@@ -60,6 +60,7 @@ class PackageDetailAPIView(RetrieveAPIView):
     queryset = Package.objects.filter(is_active=True)
     serializer_class = PackageSerializer
     permission_classes = [AllowAny]
+    lookup_field = "id"
 
 
 # ================= POPULAR PACKAGES PAGE (HTML ONLY) =================
