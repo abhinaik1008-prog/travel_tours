@@ -1,45 +1,44 @@
 from rest_framework import serializers
-from .models import (
-    Package, 
-    PackageImage, 
-    Availability, 
-    PopularPackage
-)
-
-class PackageImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PackageImage
-        fields = ('image_url',)
-
-
-class AvailabilitySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Availability
-        fields = ('start_date', 'end_date', 'slots')
-
-
-class PackageSerializer(serializers.ModelSerializer):
-    images = PackageImageSerializer(many=True, read_only=True)
-    availability = AvailabilitySerializer(many=True, read_only=True)
-    destination = serializers.StringRelatedField()
-
-    class Meta:
-        model = Package
-        fields = (
-            'id',
-            'title',
-            'destination',
-            'price',
-            'duration_days',
-            'description',
-            'inclusions',
-            'exclusions',
-            'images',
-            'availability',
-        )
+from .models import PopularPackage
 
 
 class PopularPackageSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
     class Meta:
         model = PopularPackage
-        fields = "__all__"
+        fields = [
+            "id",
+            "title",
+            "description",
+            "region",
+            "days",
+            "nights",
+            "pax",
+            "price",
+            "rating",
+            "reviews_count",
+            "transport_type",
+            "hotel_category",
+            "room_type",
+            "meals_included",
+            "sightseeing_included",
+            "tour_guide",
+            "places_covered",
+            "offer_title",
+            "has_offer",
+            "image",
+            "is_active",
+            "is_bookable",
+        ]
+
+    def get_image(self, obj):
+        """
+        Return absolute image URL if image exists
+        """
+        request = self.context.get("request")
+        if obj.image and hasattr(obj.image, "url"):
+            if request:
+                return request.build_absolute_uri(obj.image.url)
+            return obj.image.url
+        return None

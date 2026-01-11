@@ -1,0 +1,135 @@
+/* =====================================================
+   CONTACT PAGE (contact.html)
+===================================================== */
+
+/* =====================================================
+   FULL PAGE BACKGROUND
+   (Applied via body.contact-page)
+===================================================== */
+
+body.contact-page {
+    background-image:
+        linear-gradient(
+            rgba(15, 23, 42, 0.75),
+            rgba(15, 23, 42, 0.75)
+        ),
+        url("/static/images/contact-bg.jpg");
+
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+.contact-hero {
+    background: transparent;
+    padding: 100px 0 80px;
+    color: #fff;
+}
+
+.contact-title {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.contact-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-top: 10px;
+}
+
+
+/* =====================================================
+   CONTACT SECTION
+===================================================== */
+.contact-section {
+    padding: 80px 0;
+    background: transparent;
+}
+
+
+/* =====================================================
+   CONTACT CARD
+===================================================== */
+.contact-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    height: 100%;
+}
+
+.contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =====================================================
+   ICON
+===================================================== */
+.contact-icon {
+    width: 72px;
+    height: 72px;
+    background: #facc15;
+    color: #1f2933;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 22px;
+    font-size: 1.6rem;
+    box-shadow: 0 10px 25px rgba(250, 204, 21, 0.45);
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
+.contact-card h5 {
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #0f172a;
+}
+
+.contact-card p {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+.contact-card a,
+.contact-text {
+    font-weight: 600;
+    color: #1f2933;
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+@media (max-width: 768px) {
+
+    body.contact-page {
+        background-attachment: scroll;
+    }
+
+    .contact-title {
+        font-size: 2.2rem;
+    }
+
+    .contact-hero {
+        padding: 70px 0 60px;
+    }
+
+    .contact-card {
+        padding: 35px 25px;
+    }
+}

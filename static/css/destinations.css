@@ -1,0 +1,124 @@
+/* ================= DESTINATIONS PAGE ================= */
+
+/* HERO (same role as Packages hero) */
+.destinations-hero {
+    background: #777777;
+    padding: 120px 0 220px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.page-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+
+/* ================= FLOATING SECTION ================= */
+
+.destinations-page {
+    background: #f8fafc;
+    padding-bottom: 80px;
+}
+
+/* THIS creates the overlap */
+.destinations-float {
+    position: relative;
+    margin-top: -160px;   /* 🔥 same effect as Packages */
+    z-index: 10;
+}
+
+
+/* ================= DESTINATION CARD ================= */
+
+.destination-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
+    transition: all 0.35s ease;
+    height: 100%;
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ================= IMAGE ================= */
+
+.destination-image {
+    height: 220px;
+    overflow: hidden;
+}
+
+.destination-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.destination-card:hover .destination-image img {
+    transform: scale(1.08);
+}
+
+
+/* ================= CONTENT ================= */
+
+.destination-content {
+    padding: 22px 22px 26px;
+}
+
+.destination-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #0f172a;
+}
+
+.destination-desc {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+
+/* ================= LINK ================= */
+
+.destination-link {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #fbbf24;
+    text-decoration: none;
+}
+
+.destination-link:hover {
+    text-decoration: underline;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+    .destinations-hero {
+        padding: 90px 0 180px;
+    }
+
+    .page-title {
+        font-size: 2.3rem;
+    }
+
+    .destinations-float {
+        margin-top: -120px;
+    }
+}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_class %}contact-page{% endblock %}
+
+{% block title %}Contact Us | Travel & Tours{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="contact-hero">
+    <div class="container text-center">
+        <h1 class="contact-title">Contact Us</h1>
+        <p class="contact-subtitle">
+            We’d love to help you plan your next journey
+        </p>
+    </div>
+</section>
+
+<section class="contact-section">
+    <div class="container">
+        <div class="row justify-content-center g-4">
+
+            <!-- PHONE -->
+            <div class="col-md-4">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="bi bi-telephone-fill"></i>
+                    </div>
+                    <h5>Call Us</h5>
+                    <p>Talk directly with our travel expert</p>
+                    <a href="tel:+917760210382">+91 7760210382</a>
+                </div>
+            </div>
+
+            <!-- EMAIL -->
+            <div class="col-md-4">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="bi bi-envelope-fill"></i>
+                    </div>
+                    <h5>Email Us</h5>
+                    <p>Send us your travel queries</p>
+                    <a href="mailto:info.travel.com">info.travel.com</a>
+                </div>
+            </div>
+
+            <!-- ADDRESS -->
+            <div class="col-md-4">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="bi bi-geo-alt-fill"></i>
+                    </div>
+                    <h5>Visit Us</h5>
+                    <p>Meet us at our office</p>
+                    <span class="contact-text">
+                        [Address here]
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

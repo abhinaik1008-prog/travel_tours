@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Tour Packages | Travel & Tours{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/packages.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="packages-page py-5">
+    <div class="container">
+
+        <!-- PAGE HEADER -->
+        <div class="text-center mb-5">
+            <h1 class="page-title">Popular Tour Packages</h1>
+            <p class="page-subtitle">
+                Hand-picked journeys designed for comfort, culture & unforgettable memories
+            </p>
+        </div>
+
+        {% for pkg in packages %}
+        <div class="package-detail-card mb-5">
+
+            <!-- TITLE -->
+            <h2 class="package-title">
+                {{ pkg.title }}
+            </h2>
+
+            <div class="row g-4 align-items-start mt-3">
+
+                <!-- IMAGE -->
+                <div class="col-lg-4">
+                    {% if pkg.image %}
+                        <img
+                            src="{{ pkg.image.url }}"
+                            class="img-fluid rounded-4 shadow-sm"
+                            alt="{{ pkg.title }}"
+                        >
+                    {% else %}
+                        <img
+                            src="{% static 'images/placeholder.jpg' %}"
+                            class="img-fluid rounded-4 shadow-sm"
+                            alt="Package Image"
+                        >
+                    {% endif %}
+                </div>
+
+                <!-- CONTENT -->
+                <div class="col-lg-8">
+
+                    <!-- DESCRIPTION -->
+                    <p class="package-description">
+                        {{ pkg.description }}
+                    </p>
+
+                    <!-- BASIC INFO -->
+                    <div class="package-info-grid">
+                        <div>
+                            <i class="bi bi-clock"></i>
+                            {{ pkg.days }}D / {{ pkg.nights }}N
+                        </div>
+                        <div>
+                            <i class="bi bi-people"></i>
+                            Pax: {{ pkg.pax }}
+                        </div>
+                        <div>
+                            <i class="bi bi-geo-alt"></i>
+                            {{ pkg.region }}
+                        </div>
+                    </div>
+
+                    <!-- INCLUDES -->
+                    <div class="package-includes">
+                        {% if pkg.transport_type %}
+                        <span>
+                            <i class="bi bi-bus-front"></i>
+                            {{ pkg.get_transport_type_display }}
+                        </span>
+                        {% endif %}
+
+                        {% if pkg.hotel_category %}
+                        <span>
+                            <i class="bi bi-building"></i>
+                            {{ pkg.get_hotel_category_display }}
+                        </span>
+                        {% endif %}
+
+                        {% if pkg.room_type %}
+                        <span>
+                            <i class="bi bi-door-open"></i>
+                            {{ pkg.get_room_type_display }}
+                        </span>
+                        {% endif %}
+
+                        {% if pkg.meals_included %}
+                        <span>
+                            <i class="bi bi-cup-hot"></i>
+                            Meals Included
+                        </span>
+                        {% endif %}
+
+                        {% if pkg.sightseeing_included %}
+                        <span>
+                            <i class="bi bi-binoculars"></i>
+                            Sightseeing
+                        </span>
+                        {% endif %}
+
+                        {% if pkg.tour_guide %}
+                        <span>
+                            <i class="bi bi-person-badge"></i>
+                            Tour Guide
+                        </span>
+                        {% endif %}
+                    </div>
+
+                    <!-- PLACES COVERED -->
+                    {% if pkg.places_covered %}
+                    <p class="package-places">
+                        <strong>Places Covered:</strong><br>
+                        {{ pkg.places_covered }}
+                    </p>
+                    {% endif %}
+
+                    <!-- OFFER -->
+                    {% if pkg.offer_title %}
+                    <p class="package-offer">
+                        <i class="bi bi-gift-fill"></i>
+                        {{ pkg.offer_title }}
+                    </p>
+                    {% endif %}
+
+                    <!-- DEPARTURE -->
+                    {% if pkg.departure_date %}
+                    <p class="package-departure">
+                        <i class="bi bi-calendar-event"></i>
+                        Departure: {{ pkg.departure_date }}
+                    </p>
+                    {% endif %}
+
+                    <!-- PRICE + CTA -->
+                    <!-- PRICE + CTA -->
+                    <div class="package-footer">
+                        <div class="package-price-wrap">
+                            <div class="package-price">
+                                ₹{{ pkg.price }}
+                            </div>
+                            <span class="price-subtext">per person</span>
+                        </div>
+
+                        {% if pkg.is_bookable %}
+                            <button
+                                class="btn book-now-btn"
+                                data-bs-toggle="modal"
+                                data-bs-target="#bookNowModal">
+                                Book Now
+                            </button>
+                        {% else %}
+                            <button class="btn btn-secondary book-now-btn" disabled>
+                                Booking Closed
+                            </button>
+                        {% endif %}
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <p class="text-center text-muted">
+                No packages available at the moment.
+            </p>
+        {% endfor %}
+
+    </div>
+</section>
+
+{% include "book_now.html" %}
+
+{% block extra_js %}
+<script src="{% static 'js/packages.js' %}"></script>
+{% endblock %}
+
+
+{% endblock %}

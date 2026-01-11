@@ -1,0 +1,346 @@
+/* =====================================================
+   HOME PAGE – GLOBAL DEPENDENCIES
+   (Used by home.html)
+===================================================== */
+
+/* Typography (used in hero, stats, headings) */
+h1 { font-size: clamp(28px, 5vw, 48px); }
+h2 { font-size: clamp(22px, 4vw, 36px); }
+p  { font-size: clamp(14px, 2.5vw, 16px); }
+
+
+/* =====================================================
+   HERO SECTION
+===================================================== */
+.hero-section {
+    min-height: 100vh;
+    background: url("/static/images/hero.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+}
+
+.hero-content {
+    position: relative;
+    color: #fff;
+    max-width: 90%;
+}
+
+.hero-content h1 {
+    font-weight: 800;
+}
+
+.hero-content p {
+    opacity: 0.95;
+}
+
+
+/* =====================================================
+   DESTINATIONS SECTION
+===================================================== */
+/* ================= DESTINATIONS ================= */
+
+.destination-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #1f2933;
+}
+
+/* CARD */
+.destination-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 260px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    background: #000;
+}
+
+/* IMAGE */
+.destination-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* GRADIENT OVERLAY */
+.destination-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.65),
+        rgba(0,0,0,0.15),
+        transparent
+    );
+    z-index: 1;
+}
+
+/* GLASS INFO CARD */
+.destination-info {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    padding: 14px 16px;
+
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(8px);
+    border-radius: 14px;
+
+    z-index: 2;
+    transition: transform 0.35s ease;
+}
+
+/* TEXT */
+.destination-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.destination-desc {
+    font-size: 0.9rem;
+    color: #4b5563;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* HOVER EFFECTS */
+.destination-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+}
+
+.destination-card:hover .destination-img {
+    transform: scale(1.06);
+}
+
+.destination-card:hover .destination-info {
+    transform: translateY(-4px);
+}
+
+/* MOBILE TWEAK */
+@media (max-width: 576px) {
+    .destination-card {
+        height: 230px;
+    }
+
+    .destination-title {
+        font-size: 2rem;
+    }
+}
+
+
+
+/* =====================================================
+   HOME PACKAGES – PREVIEW
+===================================================== */
+.home-packages-preview {
+    background: #f8fafc;
+}
+
+.package-title {
+    font-weight: 800;
+    color: #1f2933;
+    margin-bottom: 2rem;
+}
+
+.home-package-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.home-package-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+.home-package-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.home-package-card .card-body {
+    padding: 16px;
+}
+
+.package-name {
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #1f2933;
+}
+
+.package-region {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
+.package-price {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #facc15;
+    margin: 10px 0 14px;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .home-package-card img {
+        height: 180px;
+    }
+}
+
+
+/* =====================================================
+   TRAVEL MOMENTS — INFINITE SLIDER WITH EDGE FADE
+===================================================== */
+
+.travel-title {
+    font-weight: 800;
+    letter-spacing: 0.6px;
+}
+
+/* Slider container */
+.travel-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+/* ================= EDGE FADE ================= */
+
+/* Shared fade styles */
+.travel-slider::before,
+.travel-slider::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 120px;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none; /* allows clicking images */
+}
+
+/* Left fade */
+.travel-slider::before {
+    left: 0;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+/* Right fade */
+.travel-slider::after {
+    right: 0;
+    background: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+/* ================= TRACK ================= */
+
+.travel-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    will-change: transform;
+}
+
+/* ================= MEMORY CARD ================= */
+
+.memory-card {
+    width: 260px;
+    height: 200px;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.memory-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ================= HOVER OVERLAY (OPTIONAL) ================= */
+
+.memory-card .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(31,45,61,0.85),
+        rgba(31,45,61,0.15)
+    );
+    opacity: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 14px;
+    transition: opacity 0.3s ease;
+}
+
+.memory-card:hover .overlay {
+    opacity: 1;
+}
+
+.memory-card .overlay span {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* ================= MOBILE REFINEMENT ================= */
+
+@media (max-width: 768px) {
+    .travel-slider::before,
+    .travel-slider::after {
+        width: 80px; /* softer fade on small screens */
+    }
+
+    .memory-card {
+        width: 220px;
+        height: 170px;
+    }
+}
+
+
+
+/* =====================================================
+   STATS SECTION
+===================================================== */
+#stats {
+    background-color: #f8fafc;
+}
+
+.stats-section {
+    padding: 80px 0;
+}
+
+.stat-number {
+    font-size: clamp(24px,5vw,48px);
+    font-weight: 800;
+}

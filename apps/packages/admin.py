@@ -1,16 +1,9 @@
 from django.contrib import admin
-from .models import Package, PopularPackage
-
-
-@admin.register(Package)
-class PackageAdmin(admin.ModelAdmin):
-    list_display = ("title", "is_active","price", "created_at")
-    search_fields = ("title",)
-    list_filter = ("is_active",)
+from .models import PopularPackage
 
 
 @admin.register(PopularPackage)
 class PopularPackageAdmin(admin.ModelAdmin):
-    list_display = ("title", "is_active", "price", "departure_date", "created_at")
-    search_fields = ("title",)
-    list_filter = ("is_active",)
+    list_display = ("title", "region", "price", "is_active", "is_bookable")
+    list_filter = ("region", "is_active", "is_bookable")
+    search_fields = ("title", "region")

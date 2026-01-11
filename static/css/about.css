@@ -1,0 +1,148 @@
+/* =====================================================
+   ABOUT PAGE STYLES
+   (Unified Page Hero Design)
+===================================================== */
+
+/* ================= PAGE HERO ================= */
+
+.about-hero {
+    position: relative;
+    background-color: #6b6b6b; /* same as Contact page */
+    padding: 120px 0 100px;
+    text-align: center;
+}
+
+.about-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+}
+
+.about-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.about-hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.about-hero-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+
+/* ================= ABOUT SECTION ================= */
+
+.about-section {
+    padding: 80px 0;
+    background-color: #f8fafc;
+}
+
+
+/* ================= FOUNDER CARD ================= */
+
+.founder-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 30px 22px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.founder-image {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    margin-bottom: 12px;
+}
+
+.founder-badge {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 999px;
+    background-color: #facc15;
+    color: #111827;
+}
+
+
+/* ================= ABOUT TEXT ================= */
+
+.about-text-box {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 36px 42px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.06);
+}
+
+.about-text-box p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #374151;
+    margin-bottom: 14px;
+}
+
+
+/* ================= HIGHLIGHTS ================= */
+
+.about-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 28px;
+    margin-top: 18px;
+}
+
+.about-highlights div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1f2933;
+}
+
+.about-highlights i {
+    color: #22c55e;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+    .about-hero {
+        padding: 90px 16px 70px;
+    }
+
+    .about-hero-title {
+        font-size: 2.2rem;
+    }
+
+    .about-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .about-section {
+        padding: 60px 16px;
+    }
+
+    .about-text-box {
+        padding: 28px 24px;
+    }
+
+    .about-highlights {
+        justify-content: center;
+    }
+}

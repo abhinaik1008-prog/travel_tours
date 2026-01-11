@@ -22,13 +22,16 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('apps.packages.urls')),
-    path('api/auth/', include('apps.accounts.urls')),
-    path('api/', include('apps.packages.urls')),
-    path('api/', include('apps.bookings.urls')),
-    path('api/', include('apps.destinations.urls')),
 
+    # Pages
+    path('', include('apps.core.urls')),
+
+    # APIs
+    path('api/auth/', include('apps.accounts.urls')),
+    path('api/packages/', include('apps.packages.urls')),
+    path('api/', include('apps.bookings.urls')),
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
