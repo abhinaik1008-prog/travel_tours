@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'apps.core',
     'apps.accounts',
     'apps.packages',
-    'apps.bookings',
     'apps.destinations',
 
     'rest_framework',

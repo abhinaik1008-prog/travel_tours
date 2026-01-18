@@ -1,19 +1,27 @@
 /* =====================================================
-   HOME PAGE – GLOBAL DEPENDENCIES
-   (Used by home.html)
+   HOME PAGE STYLES (home.html)
+   - Hero
+   - Destinations preview
+   - Packages preview
+   - Travel moments slider
+   - Stats section
 ===================================================== */
 
-/* Typography (used in hero, stats, headings) */
+/* =====================================================
+   GLOBAL TYPOGRAPHY (Home-specific usage)
+   - Used in hero, section headings, stats
+===================================================== */
 h1 { font-size: clamp(28px, 5vw, 48px); }
 h2 { font-size: clamp(22px, 4vw, 36px); }
 p  { font-size: clamp(14px, 2.5vw, 16px); }
 
-
 /* =====================================================
    HERO SECTION
+   - Full viewport height
+   - Background image with dark overlay
 ===================================================== */
 .hero-section {
-    min-height: 100vh;
+    min-height: 100vh; /* Full screen height */
     background: url("/static/images/hero.jpg") center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -22,39 +30,42 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     position: relative;
 }
 
+/* Dark overlay for readability */
 .hero-overlay {
     position: absolute;
     inset: 0;
     background: rgba(0,0,0,0.45);
 }
 
+/* Hero text container */
 .hero-content {
     position: relative;
     color: #fff;
     max-width: 90%;
 }
 
+/* Main hero heading */
 .hero-content h1 {
     font-weight: 800;
 }
 
+/* Hero description text */
 .hero-content p {
     opacity: 0.95;
 }
 
-
 /* =====================================================
-   DESTINATIONS SECTION
+   DESTINATIONS PREVIEW SECTION (Home)
 ===================================================== */
-/* ================= DESTINATIONS ================= */
-
+/* Section title */
 .destination-title {
     font-size: 2.4rem;
     font-weight: 800;
     color: #1f2933;
 }
 
-/* CARD */
+/* ================= DESTINATION CARD ================= */
+/* Card container */
 .destination-card {
     position: relative;
     border-radius: 20px;
@@ -62,10 +73,10 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     height: 260px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.12);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
-    background: #000;
+    background: #000; /* fallback behind image */
 }
 
-/* IMAGE */
+/* Background image */
 .destination-img {
     width: 100%;
     height: 100%;
@@ -73,7 +84,7 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     transition: transform 0.6s ease;
 }
 
-/* GRADIENT OVERLAY */
+/* Gradient overlay for text contrast */
 .destination-overlay {
     position: absolute;
     inset: 0;
@@ -86,7 +97,7 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     z-index: 1;
 }
 
-/* GLASS INFO CARD */
+/* Glass-style info card */
 .destination-info {
     position: absolute;
     left: 14px;
@@ -102,7 +113,7 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     transition: transform 0.35s ease;
 }
 
-/* TEXT */
+/* Destination name */
 .destination-name {
     font-size: 1.1rem;
     font-weight: 700;
@@ -110,6 +121,7 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     margin-bottom: 4px;
 }
 
+/* Short description */
 .destination-desc {
     font-size: 0.9rem;
     color: #4b5563;
@@ -117,7 +129,7 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     margin: 0;
 }
 
-/* HOVER EFFECTS */
+/* ================= HOVER EFFECTS ================= */
 .destination-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 18px 45px rgba(0,0,0,0.18);
@@ -131,8 +143,9 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     transform: translateY(-4px);
 }
 
-/* MOBILE TWEAK */
+/* ================= MOBILE TWEAKS ================= */
 @media (max-width: 576px) {
+
     .destination-card {
         height: 230px;
     }
@@ -142,21 +155,23 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     }
 }
 
-
-
 /* =====================================================
-   HOME PACKAGES – PREVIEW
+   HOME PACKAGES – PREVIEW SECTION
 ===================================================== */
 .home-packages-preview {
+    padding: 30px;
     background: #f8fafc;
 }
 
+/* Section title */
 .package-title {
+    font-size: 2.4rem;
     font-weight: 800;
     color: #1f2933;
     margin-bottom: 2rem;
 }
 
+/* Package preview card */
 .home-package-card {
     background: #ffffff;
     border-radius: 16px;
@@ -165,33 +180,39 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     transition: all 0.3s ease;
 }
 
+/* Hover lift */
 .home-package-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
 }
 
+/* Package image */
 .home-package-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
 }
 
+/* Card body spacing */
 .home-package-card .card-body {
     padding: 16px;
 }
 
+/* Package name */
 .package-name {
     font-weight: 700;
     margin-bottom: 4px;
     color: #1f2933;
 }
 
+/* Region / location text */
 .package-region {
     font-size: 0.85rem;
     color: #64748b;
     margin-bottom: 6px;
 }
 
+/* Price highlight */
 .package-price {
     font-size: 1.15rem;
     font-weight: 800;
@@ -202,24 +223,31 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     box-shadow: none;
 }
 
-/* Mobile */
+/* Mobile adjustments */
 @media (max-width: 768px) {
+
     .home-package-card img {
         height: 180px;
     }
+
+    .package-title {
+        font-size: 2rem;
+    }
 }
 
-
 /* =====================================================
-   TRAVEL MOMENTS — INFINITE SLIDER WITH EDGE FADE
+   TRAVEL MOMENTS
+   - Infinite horizontal slider
+   - Edge fade effect
 ===================================================== */
-
+/* Section title */
 .travel-title {
+    font-size: 2.4rem;
     font-weight: 800;
     letter-spacing: 0.6px;
 }
 
-/* Slider container */
+/* Slider wrapper */
 .travel-slider {
     position: relative;
     width: 100%;
@@ -227,9 +255,8 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     margin-bottom: 40px;
 }
 
-/* ================= EDGE FADE ================= */
-
-/* Shared fade styles */
+/* ================= EDGE FADE EFFECT ================= */
+/* Shared pseudo elements */
 .travel-slider::before,
 .travel-slider::after {
     content: "";
@@ -238,7 +265,7 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     width: 120px;
     height: 100%;
     z-index: 5;
-    pointer-events: none; /* allows clicking images */
+    pointer-events: none;
 }
 
 /* Left fade */
@@ -261,8 +288,7 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     );
 }
 
-/* ================= TRACK ================= */
-
+/* ================= SLIDER TRACK ================= */
 .travel-track {
     display: flex;
     gap: 20px;
@@ -271,7 +297,6 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
 }
 
 /* ================= MEMORY CARD ================= */
-
 .memory-card {
     width: 260px;
     height: 200px;
@@ -287,8 +312,7 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     object-fit: cover;
 }
 
-/* ================= HOVER OVERLAY (OPTIONAL) ================= */
-
+/* ================= HOVER OVERLAY ================= */
 .memory-card .overlay {
     position: absolute;
     inset: 0;
@@ -313,12 +337,16 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     font-weight: 600;
 }
 
-/* ================= MOBILE REFINEMENT ================= */
-
+/* ================= MOBILE REFINEMENTS ================= */
 @media (max-width: 768px) {
+
     .travel-slider::before,
     .travel-slider::after {
-        width: 80px; /* softer fade on small screens */
+        width: 80px;
+    }
+
+    .travel-title {
+        font-size: 2rem;
     }
 
     .memory-card {
@@ -326,8 +354,6 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
         height: 170px;
     }
 }
-
-
 
 /* =====================================================
    STATS SECTION
@@ -340,7 +366,23 @@ p  { font-size: clamp(14px, 2.5vw, 16px); }
     padding: 80px 0;
 }
 
+/* Main number */
 .stat-number {
     font-size: clamp(24px,5vw,48px);
     font-weight: 800;
+}
+
+/* Number + plus symbol container */
+.stat-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Plus sign fine-tuning */
+.stat-count .plus {
+    font-size: 1em;
+    line-height: 1;
+    position: relative;
+    top: 0.05em;
 }

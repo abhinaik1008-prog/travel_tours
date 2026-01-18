@@ -1,30 +1,36 @@
 /* =====================================================
    ABOUT PAGE STYLES
-   (Unified Page Hero Design)
+   (Unified Page Hero Design for consistency)
 ===================================================== */
 
-/* ================= PAGE HERO ================= */
-
+/* =====================================================
+   PAGE HERO SECTION
+   - Large top banner with overlay
+   - Matches Contact page theme
+===================================================== */
 .about-hero {
     position: relative;
-    background-color: #6b6b6b; /* same as Contact page */
-    padding: 120px 0 100px;
+    background-color: #6b6b6b; /* Neutral grey hero background */
+    padding: 120px 0 75px;    /* Large top spacing */
     text-align: center;
 }
 
+/* Dark overlay on top of hero background */
 .about-hero::after {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: 0; /* top, right, bottom, left = 0 */
     background: rgba(0, 0, 0, 0.15);
     pointer-events: none;
 }
 
+/* Ensures content appears above overlay */
 .about-hero .container {
     position: relative;
     z-index: 2;
 }
 
+/* Page title styling */
 .about-hero-title {
     font-size: 3rem;
     font-weight: 800;
@@ -32,6 +38,7 @@
     margin-bottom: 10px;
 }
 
+/* Subtitle text under hero title */
 .about-hero-subtitle {
     font-size: 1.1rem;
     color: rgba(255, 255, 255, 0.9);
@@ -39,25 +46,28 @@
     margin: 0 auto;
 }
 
-
-/* ================= ABOUT SECTION ================= */
-
+/* =====================================================
+   ABOUT MAIN SECTION
+   - Contains founder card + about content box
+===================================================== */
 .about-section {
     padding: 80px 0;
-    background-color: #f8fafc;
+    background-color: #f8fafc; /* Light background for clean reading */
 }
 
-
-/* ================= FOUNDER CARD ================= */
-
+/* =====================================================
+   FOUNDER CARD BOX
+   - Card with image, name badge, and description
+===================================================== */
 .founder-card {
     background: #ffffff;
     border-radius: 18px;
     padding: 30px 22px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.08); /* Soft elevated shadow */
     text-align: center;
 }
 
+/* Founder image */
 .founder-image {
     max-width: 220px;
     width: 100%;
@@ -66,20 +76,22 @@
     margin-bottom: 12px;
 }
 
+/* Yellow oval badge */
 .founder-badge {
     display: inline-block;
     margin-top: 6px;
     padding: 6px 16px;
     font-size: 0.8rem;
     font-weight: 600;
-    border-radius: 999px;
+    border-radius: 999px; /* Fully rounded */
     background-color: #facc15;
     color: #111827;
 }
 
-
-/* ================= ABOUT TEXT ================= */
-
+/* =====================================================
+   ABOUT TEXT CONTENT BOX
+   - Main description paragraph section
+===================================================== */
 .about-text-box {
     background: #ffffff;
     border-radius: 18px;
@@ -87,6 +99,7 @@
     box-shadow: 0 16px 40px rgba(0,0,0,0.06);
 }
 
+/* Paragraph content inside description box */
 .about-text-box p {
     font-size: 0.95rem;
     line-height: 1.8;
@@ -94,9 +107,10 @@
     margin-bottom: 14px;
 }
 
-
-/* ================= HIGHLIGHTS ================= */
-
+/* =====================================================
+   HIGHLIGHT BULLET POINTS
+   - Feature list with green icons
+===================================================== */
 .about-highlights {
     display: flex;
     flex-wrap: wrap;
@@ -104,6 +118,7 @@
     margin-top: 18px;
 }
 
+/* Each highlight bullet */
 .about-highlights div {
     display: flex;
     align-items: center;
@@ -113,35 +128,42 @@
     color: #1f2933;
 }
 
+/* Green check/tick/icon */
 .about-highlights i {
     color: #22c55e;
 }
 
-
-/* ================= MOBILE ================= */
-
+/* =====================================================
+   MOBILE RESPONSIVENESS
+===================================================== */
 @media (max-width: 768px) {
 
+    /* Reduce hero padding for small screens */
     .about-hero {
         padding: 90px 16px 70px;
     }
 
+    /* Scale hero title */
     .about-hero-title {
         font-size: 2.2rem;
     }
 
+    /* Scale subtitle */
     .about-hero-subtitle {
         font-size: 1rem;
     }
 
+    /* Reduce spacing for main content */
     .about-section {
         padding: 60px 16px;
     }
 
+    /* Compact text box */
     .about-text-box {
         padding: 28px 24px;
     }
 
+    /* Center highlights on mobile */
     .about-highlights {
         justify-content: center;
     }

@@ -1,69 +1,79 @@
 /* =====================================================
-   PACKAGES PAGE – HERO (MATCH CONTACT PAGE)
+   PACKAGES PAGE STYLES (packages.html)
+   - Hero section
+   - Package detail cards
+   - Pricing & CTA
 ===================================================== */
 
-.packages-page {
-    padding-top: 0;
-    margin-top: -72px; /* cancels body padding */
-}
-
-/* HERO BLOCK */
-.packages-page .page-title,
-.packages-page .page-subtitle {
-    position: relative;
-    z-index: 2;
-}
-
-/* HERO BLOCK */
-.packages-page::before {
-    content: "";
-    display: block;
-    height: 300px;
-    background-color: #6b6b6b;
-}
-
-/* HERO TEXT */
-.packages-page .page-title {
-    margin-top: -220px;
-    font-size: clamp(2.4rem, 4vw, 3rem);
-    font-weight: 800;
+/* =====================================================
+   HERO SECTION
+   - Matches Destinations page hero exactly
+===================================================== */
+/* Hero wrapper */
+.packages-hero {
+    background: #777777;               /* Same color as destinations hero */
+    padding: 120px 0 60px;             /* Identical spacing for consistency */
+    text-align: center;
     color: #ffffff;
-    text-align: center;
 }
 
-.packages-page .page-subtitle {
+/* Hero title */
+.packages-hero .page-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+/* Hero subtitle */
+.packages-hero .page-subtitle {
     font-size: 1.1rem;
-    color: #e5e7eb;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 80px;
+    opacity: 0.9;
 }
 
 /* =====================================================
-   PACKAGE DETAIL CARD (UNCHANGED DESIGN)
+   PAGE WRAPPER CLEANUP
+   - Removes legacy spacing issues
 ===================================================== */
+.packages-page {
+    /* background: #f8fafc; */          /* Intentionally disabled */
+    padding-top: 0;
+    margin-top: 0;
+}
 
+/* Remove extra gap before first package card */
+.packages-float > .container {
+    padding-top: 40px;
+}
+
+/* =====================================================
+   PACKAGE DETAIL CARD
+   - Main card containing full package information
+===================================================== */
 .package-detail-card {
     background: #ffffff;
     padding: 35px;
     border-radius: 18px;
-    box-shadow: 0 18px 45px rgba(0,0,0,0.06);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.4);
 }
 
-/* Title */
+/* Package title */
 .package-title {
     font-weight: 800;
     color: #111827;
 }
 
-/* Description */
+/* Package description */
 .package-description {
     color: #374151;
     line-height: 1.7;
     margin-bottom: 18px;
 }
 
-/* Info grid */
+/* =====================================================
+   PACKAGE INFO GRID
+   - Duration, type, location, etc.
+===================================================== */
 .package-info-grid {
     display: flex;
     gap: 30px;
@@ -73,12 +83,15 @@
     color: #1f2933;
 }
 
+/* Info icons */
 .package-info-grid i {
     color: #facc15;
     margin-right: 6px;
 }
 
-/* Includes */
+/* =====================================================
+   PACKAGE INCLUSIONS
+===================================================== */
 .package-includes {
     display: flex;
     flex-wrap: wrap;
@@ -86,35 +99,43 @@
     margin-bottom: 18px;
 }
 
+/* Included item text */
 .package-includes span {
     font-weight: 600;
     color: #374151;
 }
 
+/* Check icons */
 .package-includes i {
-    color: #22c55e;
+    color: #facc15;
     margin-right: 6px;
 }
 
-/* Places */
+/* =====================================================
+   ADDITIONAL PACKAGE DETAILS
+===================================================== */
+/* Places covered */
 .package-places {
     font-size: 0.95rem;
     color: #4b5563;
 }
 
-/* Offer */
+/* Special offer text */
 .package-offer {
     color: #16a34a;
     font-weight: 600;
 }
 
-/* Departure */
+/* Departure info */
 .package-departure {
     color: #374151;
     font-weight: 500;
 }
 
-/* ===== PACKAGE FOOTER LAYOUT ===== */
+/* =====================================================
+   PACKAGE FOOTER
+   - Price + Book Now CTA
+===================================================== */
 .package-footer {
     display: flex;
     justify-content: space-between;
@@ -124,12 +145,13 @@
     border-top: 1px solid #e5e7eb;
 }
 
-/* ===== PRICE WRAP ===== */
+/* ================= PRICE DISPLAY ================= */
 .package-price-wrap {
     display: flex;
     flex-direction: column;
 }
 
+/* Main price */
 .package-price {
     font-size: 1.6rem;
     font-weight: 800;
@@ -137,13 +159,14 @@
     line-height: 1.1;
 }
 
+/* Small price subtext */
 .price-subtext {
     font-size: 0.85rem;
     color: #6b7280;
     margin-top: 2px;
 }
 
-/* ===== BOOK NOW BUTTON ===== */
+/* ================= BOOK NOW BUTTON ================= */
 .book-now-btn {
     padding: 12px 28px;
     border-radius: 999px;
@@ -153,18 +176,20 @@
     border: none;
 }
 
-/* Active Book Now */
+/* Enabled state */
 .book-now-btn:not(:disabled) {
     background: linear-gradient(135deg, #fbbf24, #f59e0b);
     color: #111827;
     box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35);
 }
 
+/* Hover animation */
 .book-now-btn:not(:disabled):hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 26px rgba(245, 158, 11, 0.45);
 }
 
+/* Click state */
 .book-now-btn:not(:disabled):active {
     transform: translateY(0);
 }
@@ -177,19 +202,22 @@
     box-shadow: none;
 }
 
-
 /* =====================================================
-   MOBILE
+   RESPONSIVE — MOBILE
 ===================================================== */
 @media (max-width: 768px) {
-    .packages-page::before {
-        height: 260px;
+
+    /* Match Destinations mobile hero */
+    .packages-hero {
+        padding: 90px 0 80px;
     }
 
-    .packages-page .page-title {
-        margin-top: -190px;
+    /* Smaller title */
+    .packages-hero .page-title {
+        font-size: 2.3rem;
     }
 
+    /* Stack footer items comfortably */
     .package-footer {
         gap: 15px;
     }

@@ -19,19 +19,18 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
 
-    # Pages
-    path('', include('apps.core.urls')),
+    path("", include("apps.core.urls")),
+    path('packages/', include('apps.packages.urls')),
+    
 
-    # APIs
-    path('api/auth/', include('apps.accounts.urls')),
-    path('api/packages/', include('apps.packages.urls')),
-    path('api/', include('apps.bookings.urls')),
 ]
 
-
+# ======================
+# MEDIA & STATIC (DEV)
+# ======================
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,12 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/destinations.css' %}">
 {% endblock %}
-
 {% block content %}
-
 <!-- HERO SECTION (matches Packages page feel) -->
 <section class="destinations-hero">
     <div class="container text-center">
@@ -16,18 +13,13 @@
         </p>
     </div>
 </section>
-
 <!-- FLOATING DESTINATIONS GRID -->
 <section class="destinations-page">
     <div class="container destinations-float">
-
         <div class="row g-4">
-
             {% for destination in destinations %}
             <div class="col-12 col-sm-6 col-lg-4">
-
                 <div class="destination-card">
-
                     <!-- Image -->
                     <div class="destination-image">
                         {% if destination.image %}
@@ -36,34 +28,23 @@
                             <img src="{% static 'images/placeholder.jpg' %}" alt="{{ destination.name }}">
                         {% endif %}
                     </div>
-
                     <!-- Content -->
                     <div class="destination-content">
                         <h5 class="destination-title">
                             {{ destination.name }}
                         </h5>
-
                         <p class="destination-desc">
-                            {{ destination.description|truncatechars:100 }}
+                            {{ destination.description }}
                         </p>
-
-                        <a href="{% url 'packages' %}" class="destination-link">
-                            Explore →
-                        </a>
                     </div>
-
                 </div>
-
             </div>
             {% empty %}
             <p class="text-center text-muted mt-5">
                 No destinations available right now.
             </p>
             {% endfor %}
-
         </div>
-
     </div>
 </section>
-
 {% endblock %}

@@ -1,16 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}Home | Travel & Tours{% endblock %}
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
-
 {% block content %}
-
-
-
 <!-- ================= HERO ================= -->
 <section id="hero" class="hero-section">
     <div class="hero-overlay"></div>
@@ -22,24 +16,16 @@
         </p>
     </div>
 </section>
-
-
-<!-- ================= DESTINATIONS ================= -->
 <!-- ================= DESTINATIONS ================= -->
 <section id="destinations" class="py-5">
     <div class="container">
-
         <h2 class="text-center mb-5 destination-title">
             Popular Destinations
         </h2>
-
         <div class="row g-4">
-
             {% for destination in destinations %}
             <div class="col-12 col-sm-6 col-lg-4">
-
                 <div class="destination-card">
-
                     <!-- IMAGE -->
                     {% if destination.image %}
                         <img src="{{ destination.image.url }}"
@@ -50,75 +36,53 @@
                              alt="{{ destination.name }}"
                              class="destination-img">
                     {% endif %}
-
                     <!-- DARK GRADIENT OVER IMAGE -->
                     <div class="destination-overlay"></div>
-
                     <!-- FLOATING INFO CARD -->
                     <div class="destination-info">
-
                         <h5 class="destination-name">
                             {{ destination.name }}
                         </h5>
-
                         <p class="destination-desc">
                             {{ destination.description|truncatechars:90 }}
                         </p>
-
                     </div>
-
                 </div>
-
             </div>
             {% empty %}
             <p class="text-center text-muted mt-4">
                 No destinations available right now.
             </p>
             {% endfor %}
-
         </div>
-
     </div>
 </section>
-
-
-
-<!-- ================= PACKAGES ================= -->
 <!-- ================= PACKAGES ================= -->
 <section class="home-packages-preview my-5">
     <div class="container">
-
         <h2 class="text-center mb-4 package-title">
             Checkout our Tour Packages
         </h2>
-
         <div class="row g-4">
-
             {% for pkg in popular_packages|slice:":6" %}
             <div class="col-12 col-sm-6 col-lg-4">
-
                 <div class="home-package-card d-flex flex-column h-100">
-
                     {% if pkg.image %}
                         <img src="{{ pkg.image.url }}" alt="{{ pkg.title }}">
                     {% else %}
                         <img src="{% static 'images/placeholder.jpg' %}"
                              alt="{{ pkg.title }}">
                     {% endif %}
-
                     <div class="card-body text-center mt-auto">
                         <h6 class="package-name">
                             {{ pkg.title }}
                         </h6>
-
                         <p class="package-region">
                             {{ pkg.region }}
                         </p>
-
                         <p class="package-price">
                             ₹{{ pkg.price }}
                         </p>
-
                         <button
                             class="btn btn-warning w-100 fw-semibold"
                             data-bs-toggle="modal"
@@ -126,133 +90,84 @@
                             Book Now
                         </button>
                     </div>
-
                 </div>
-
             </div>
             {% empty %}
             <p class="text-center text-muted mt-4">
                 No tour packages available right now.
             </p>
             {% endfor %}
-
         </div>
-
         <div class="text-center mt-5">
             <a href="{% url 'packages' %}"
                class="btn btn-outline-warning px-5 py-2 fw-semibold">
                 View All Tour Packages
             </a>
         </div>
-
     </div>
 </section>
-
-
-<!-- ================= BOOKING MODAL ================= -->
-<div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content text-center p-4">
-
-            <h5 class="fw-bold mb-3">Booking Information</h5>
-
-            <p class="mb-3">
-                For booking contact the organizer on this number.
-            </p>
-
-            <h4 class="fw-bold text-warning mb-4">
-                📞 +91 7760210382
-            </h4>
-
-            <button class="btn btn-secondary" data-bs-dismiss="modal">
-                Close
-            </button>
-
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
 <!-- ================= TRAVEL MEMORIES ================= -->
 <section id="travel-memories" class="my-5">
     <div class="container overflow-hidden">
-
         <h2 class="text-center mb-4 travel-title">
             Travel Moments
         </h2>
-
         <p class="text-center text-muted mb-4">
             Memories created by our happy travelers across the world
         </p>
-
         <!-- LEFT → RIGHT -->
-<!-- LEFT → RIGHT -->
-<div class="travel-slider slider-left">
-    <div class="travel-track track-left d-flex">
-        {% for img in memories %}
-        <div class="memory-card me-3">
-            <img src="{% static img %}" alt="Travel memory">
+        <div class="travel-slider slider-left">
+            <div class="travel-track track-left d-flex">
+                {% for img in memories %}
+                <div class="memory-card me-3">
+                    <img src="{% static img %}" alt="Travel memory">
+                </div>
+                {% endfor %}
+            </div>
         </div>
-        {% endfor %}
-    </div>
-</div>
-
-<!-- RIGHT → LEFT -->
-<div class="travel-slider slider-right mt-4">
-    <div class="travel-track track-right d-flex">
-        {% for img in memories %}
-        <div class="memory-card me-3">
-            <img src="{% static img %}" alt="Travel memory">
+        <!-- RIGHT → LEFT -->
+        <div class="travel-slider slider-right mt-4">
+            <div class="travel-track track-right d-flex">
+                {% for img in memories %}
+                <div class="memory-card me-3">
+                    <img src="{% static img %}" alt="Travel memory">
+                </div>
+                {% endfor %}
+            </div>
         </div>
-        {% endfor %}
-    </div>
-</div>
-
-
     </div>
 </section>
-
 <!-- ================= STATS ================= -->
 <section id="stats" class="stats-section">
     <div class="container">
         <div class="row text-center">
-
             <div class="col-6 col-md-3 mb-4">
-                <h2>
-                    <span class="stat-number" data-target="523">0</span>+
+                <h2 class="stat-count">
+                    <span class="stat-number" data-target="523">0</span><span class="plus">+</span>
                 </h2>
                 <p>New Visitors Every Month</p>
             </div>
-
             <div class="col-6 col-md-3 mb-4">
-                <h2>
-                    <span class="stat-number" data-target="54321">0</span>+
+                <h2 class="stat-count">
+                    <span class="stat-number" data-target="54321">0</span><span class="plus">+</span>
                 </h2>
                 <p>Happy Customers</p>
             </div>
-
             <div class="col-6 col-md-3 mb-4">
-                <h2>
-                    <span class="stat-number" data-target="4321">0</span>+
+                <h2 class="stat-count">
+                    <span class="stat-number" data-target="4321">0</span><span class="plus">+</span>
                 </h2>
                 <p>Tour Places</p>
             </div>
-
             <div class="col-6 col-md-3 mb-4">
-                <h2>
-                    <span class="stat-number" data-target="321">0</span>+
+                <h2 class="stat-count">
+                    <span class="stat-number" data-target="321">0</span><span class="plus">+</span>
                 </h2>
                 <p>Five Star Ratings</p>
             </div>
-
         </div>
     </div>
 </section>
-
 {% block extra_js %}
 <script src="{% static 'js/home.js' %}"></script>
 {% endblock %}

@@ -3,6 +3,7 @@ from django.conf import settings
 from django.shortcuts import render
 from apps.destinations.models import Destination
 from apps.packages.models import PopularPackage
+from django.contrib.staticfiles import finders
 
 
 def home(request):
@@ -13,18 +14,23 @@ def home(request):
     memories_dir = os.path.join(settings.STATICFILES_DIRS[0], "images/memories")
 
     memories = []
-    if os.path.exists(memories_dir):
-        memories = sorted([
-            f"images/memories/{img}"
-            for img in os.listdir(memories_dir)
-            if img.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))
-        ])
 
-    return render(request, 'home/home.html', {
-        'destinations': destinations,
-        'popular_packages': popular_packages,
-        'memories': memories,   # ✅ added safely
-    })
+    memories_dir = finders.find("images/memories")
+    if memories_dir:
+        memories = sorted(
+            [
+                f"images/memories/{img}"
+                for img in os.listdir(memories_dir)
+                if img.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))
+            ]
+        )
+
+
+        return render(request, 'home/home.html', {
+            'destinations': destinations,
+            'popular_packages': popular_packages,
+            'memories': memories,   # ✅ added safely
+        })
 
 
 def about(request):

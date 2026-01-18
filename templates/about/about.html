@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}About Us | Travel & Tours{% endblock %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/about.css' %}">
 {% endblock %}
-
 {% block content %}
-
 <!-- ================= ABOUT HERO ================= -->
 <section class="about-hero">
     <div class="container text-center">
@@ -17,66 +14,42 @@
         </p>
     </div>
 </section>
-
 <!-- ================= ABOUT CONTENT ================= -->
 <section class="about-section">
     <div class="container">
-
         <div class="row align-items-center g-5">
-
             <!-- LEFT : FOUNDER CARD -->
             <div class="col-lg-4 text-center">
                 <div class="founder-card">
-
-                    <img
-                        src="{% static 'images/logo.jpg' %}"
-                        alt="Founder of Shivu Package Tours"
-                        class="founder-image"
-                    >
-
+                    <img src="{% static 'images/logo.jpg' %}" alt="Founder of Shivu Package Tours" class="founder-image" >
                     <h4 class="mt-3 mb-1 fw-bold">Shivu</h4>
                     <p class="text-muted mb-2">Founder & CEO</p>
-
                     <span class="founder-badge">
-                        Since 2009
+                        Since 2010
                     </span>
                 </div>
             </div>
-
             <!-- RIGHT : TEXT -->
             <div class="col-lg-8">
                 <div class="about-text-box">
-
                     <p>
                         Our company is dedicated to providing the best travel experiences
                         to our customers. We specialize in creating custom itineraries
                         that cater to individual preferences.
                     </p>
-
                     <p>
-                        <strong>Shivu Package Tours</strong> specializes in special groups,
+                        <strong>Veerabhadreshwar Package Tours</strong> specializes in special groups,
                         honeymoon packages, family groups, and tailor-made travel programs.
                     </p>
-
                     <p>
-                        Founded in 2009 by
-                        <strong>Mr. Ganapati Ashok Sontakki</strong>,
+                        Founded in 2010 by
+                        <strong>Mr. Shivputra M Hiremath</strong>,
                         we are recognized by the Government of India and the
                         Karnataka Tourism Department.
                     </p>
-
-                    <div class="about-highlights">
-                        <div><i class="bi bi-check-circle-fill"></i> Government Recognized</div>
-                        <div><i class="bi bi-check-circle-fill"></i> 15+ Years Experience</div>
-                        <div><i class="bi bi-check-circle-fill"></i> Trusted by Thousands</div>
-                    </div>
-
                 </div>
             </div>
-
         </div>
-
     </div>
 </section>
-
 {% endblock %}
