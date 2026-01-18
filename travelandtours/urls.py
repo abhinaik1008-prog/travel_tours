@@ -18,10 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from apps.core.views import health_check
 
 urlpatterns = [
     path("admin/", admin.site.urls),
 
+    
+    path("", health_check),
     path("", include("apps.core.urls")),
     path('packages/', include('apps.packages.urls')),
     

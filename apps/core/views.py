@@ -1,10 +1,13 @@
 import os
+from django.http import HttpResponse
 from django.conf import settings
 from django.shortcuts import render
 from apps.destinations.models import Destination
 from apps.packages.models import PopularPackage
 from django.contrib.staticfiles import finders
 
+def health_check(request):
+    return HttpResponse("Travel & Tours is LIVE 🚀")
 
 def home(request):
     destinations = Destination.objects.filter(is_active=True)[:6]
