@@ -4,6 +4,8 @@ from django.shortcuts import render
 from apps.destinations.models import Destination
 from apps.packages.models import PopularPackage
 from django.contrib.staticfiles import finders
+from django.contrib.auth import get_user_model
+from django.http import HttpResponse
 
 def home(request):
     destinations = Destination.objects.filter(is_active=True)[:6]
@@ -42,3 +44,11 @@ def packages(request):
 
 def contact(request):
     return render(request, 'contact/contact.html', {"hide_footer": True})
+
+
+def create_admin(request):
+    User = get_user_model()
+    if not User.objects.filter(username="admin").exists():
+        User.objects.create_superuser("admin", "admin@example.com", "Admin@123")
+        return HttpResponse("Admin created.")
+    return HttpResponse("Admin already exists.")
