@@ -48,7 +48,15 @@ def contact(request):
 
 def create_admin(request):
     User = get_user_model()
-    if not User.objects.filter(username="admin").exists():
-        User.objects.create_superuser("admin", "admin@example.com", "Admin@123")
-        return HttpResponse("Admin created.")
-    return HttpResponse("Admin already exists.")
+
+    phone = "7019510680"
+
+    if User.objects.filter(phone=phone).exists():
+        return HttpResponse("Admin already exists")
+
+    User.objects.create_superuser(
+        phone=phone,
+        password="Admin@123"
+    )
+
+    return HttpResponse("Admin created successfully")
