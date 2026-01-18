@@ -44,19 +44,3 @@ def packages(request):
 
 def contact(request):
     return render(request, 'contact/contact.html', {"hide_footer": True})
-
-
-def create_admin(request):
-    User = get_user_model()
-
-    phone = "7019510680"
-
-    if User.objects.filter(phone=phone).exists():
-        return HttpResponse("Admin already exists")
-
-    User.objects.create_superuser(
-        phone=phone,
-        password="Admin@123"
-    )
-
-    return HttpResponse("Admin created successfully")
