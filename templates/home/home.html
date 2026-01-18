@@ -28,7 +28,7 @@
                 <div class="destination-card">
                     <!-- IMAGE -->
                     {% if destination.image %}
-                        <img src="{{ destination.image.url }}"
+                        <img src="{% static 'images/destinations/' %}{{ destination.image.name|cut:'destinations/' }}"
                              alt="{{ destination.name }}"
                              class="destination-img">
                     {% else %}
@@ -68,7 +68,7 @@
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="home-package-card d-flex flex-column h-100">
                     {% if pkg.image %}
-                        <img src="{{ pkg.image.url }}" alt="{{ pkg.title }}">
+                        <img src="{% static 'images/packages/' %}{{ pkg.image.name|cut:'packages/' }}" alt="{{ pkg.title }}">
                     {% else %}
                         <img src="{% static 'images/placeholder.jpg' %}"
                              alt="{{ pkg.title }}">
