@@ -9,27 +9,21 @@ def home(request):
     destinations = Destination.objects.filter(is_active=True)[:6]
     popular_packages = PopularPackage.objects.filter(is_active=True)[:6]
 
-    # ================= MEMORIES (DYNAMIC) =================
-    memories_dir = os.path.join(settings.STATICFILES_DIRS[0], "images/memories")
-
     memories = []
 
     memories_dir = finders.find("images/memories")
-    if memories_dir:
-        memories = sorted(
-            [
-                f"images/memories/{img}"
-                for img in os.listdir(memories_dir)
-                if img.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))
-            ]
-        )
+    if memories_dir and os.path.isdir(memories_dir):
+        memories = sorted([
+            f"images/memories/{img}"
+            for img in os.listdir(memories_dir)
+            if img.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))
+        ])
 
-
-        return render(request, 'home/home.html', {
-            'destinations': destinations,
-            'popular_packages': popular_packages,
-            'memories': memories,   # ✅ added safely
-        })
+    return render(request, "home/home.html", {
+        "destinations": destinations,
+        "popular_packages": popular_packages,
+        "memories": memories,
+    })
 
 
 def about(request):
