@@ -29,7 +29,7 @@
                     {% if pkg.image %}
                         <img src="{{ pkg.image.url }}" class="img-fluid rounded-4 shadow-sm" alt="{{ pkg.title }}" >
                     {% else %}
-                        <img src="{% static 'images/placeholder.jpg' %}" class="img-fluid rounded-4 shadow-sm" alt="Package Image" >
+                        <img src="{% static 'images/packages/' %}{{ package.image.name|cut:'packages/' }}" class="img-fluid rounded-4 shadow-sm" alt="Package Image" >
                     {% endif %}
                 </div>
                 <!-- CONTENT -->

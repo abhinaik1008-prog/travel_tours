@@ -23,7 +23,7 @@
                     <!-- Image -->
                     <div class="destination-image">
                         {% if destination.image %}
-                            <img src="{{ destination.image.url }}" alt="{{ destination.name }}">
+                            <img src="{% static 'images/destinations/' %}{{ destination.image.name|cut:'destinations/' }}" alt="{{ destination.name }}">
                         {% else %}
                             <img src="{% static 'images/placeholder.jpg' %}" alt="{{ destination.name }}">
                         {% endif %}
