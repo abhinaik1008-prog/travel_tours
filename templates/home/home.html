@@ -68,7 +68,7 @@
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="home-package-card d-flex flex-column h-100">
                     {% if pkg.image %}
-                        <img src="{% static 'images/packages/' %}{{ pkg.image.name|cut:'packages/' }}" alt="{{ pkg.title }}">
+                        <img src="{% static 'images/popular_packages/' %}{{ pkg.image.name|cut:'popular_packages/' }}" alt="{{ pkg.title }}">
                     {% else %}
                         <img src="{% static 'images/placeholder.jpg' %}"
                              alt="{{ pkg.title }}">

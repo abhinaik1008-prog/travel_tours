@@ -27,9 +27,9 @@
                 <!-- IMAGE -->
                 <div class="col-lg-4">
                     {% if pkg.image %}
-                        <img src="{% static 'images/packages/' %}{{ pkg.image.name|cut:'packages/' }}" class="img-fluid rounded-4 shadow-sm" alt="{{ pkg.title }}" >
+                        <img src="{% static 'images/popular_packages/' %}{{ pkg.image.name|cut:'popular_packages/' }}" class="img-fluid rounded-4 shadow-sm" alt="{{ pkg.title }}" >
                     {% else %}
-                        <img src="{% static 'images/packages/' %}{{ pkg.image.name|cut:'packages/' }}" class="img-fluid rounded-4 shadow-sm" alt="Package Image" >
+                        <img src="{% static 'images/popular_packages/' %}{{ pkg.image.name|cut:'popular_packages/' }}" class="img-fluid rounded-4 shadow-sm" alt="Package Image" >
                     {% endif %}
                 </div>
                 <!-- CONTENT -->
